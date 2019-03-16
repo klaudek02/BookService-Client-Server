@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Book} from '../shared/book.model';
-import {BookService} from '../shared/book.service';
+import {Book} from '../../shared/book.model';
+import {BookService} from '../../shared/book.service';
 import {Router} from '@angular/router';
 
 @Component({

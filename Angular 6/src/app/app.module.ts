@@ -10,13 +10,14 @@ import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 //routes
 import { appRoutes } from './routes';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserProfileComponent } from './user-side/user-profile/user-profile.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { UserService } from './shared/user.service';
 //other
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import { CrudComponent } from './crud/crud.component';
+import { CrudComponent } from './user-side/crud/crud.component';
+import { UserSideComponent } from './user-side/user-side.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CrudComponent } from './crud/crud.component';
     SignUpComponent,
     UserProfileComponent,
     SignInComponent,
-    CrudComponent
+    CrudComponent,
+    UserSideComponent
   ],
   imports: [
     BrowserModule,
