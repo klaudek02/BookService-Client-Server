@@ -1,5 +1,5 @@
 export class Book {
-  id: number;
+  _id: string;
   bookName: string;
   genre: string;
   premiereDate: Date;

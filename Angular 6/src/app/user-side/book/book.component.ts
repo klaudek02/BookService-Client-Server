@@ -4,13 +4,14 @@ import {BookService} from '../../shared/book.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-crud',
-  templateUrl: './crud.component.html',
-  styleUrls: ['./crud.component.css']
+  selector: 'app-book',
+  templateUrl: './book.component.html',
+  styleUrls: ['./book.component.css']
 })
-export class CrudComponent implements OnInit {
+export class BookComponent implements OnInit {
 
   books: Book[];
+  newRow: boolean;
 
   constructor(private bookService: BookService, private router: Router) { }
 
@@ -22,9 +23,20 @@ export class CrudComponent implements OnInit {
   }
 
   deleteBook(book: Book) {
-    this.bookService.deleteBook(book.id)
+    this.bookService.deleteBook(book._id)
       .subscribe(data => {
         this.books = this.books.filter(u => u !== book);
       });
+    return this.router.navigate(['books']);
+  }
+
+  editBook(book: Book) {
+    localStorage.removeItem('editBookId');
+    localStorage.setItem('editBookId', book._id);
+    return this.router.navigate(['editbook']);
+  }
+
+  addBook() {
+
   }
 }

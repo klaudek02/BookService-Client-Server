@@ -1,4 +1,4 @@
-const Book = require('../models/Book');
+const Book = require('../models/book.model');
 
 
 exports.book_create = function (req, res,next) {
@@ -22,14 +22,15 @@ exports.book_create = function (req, res,next) {
 };
 
 exports.book_read = function (req, res,next) {
-    Book.find({bookName : req.params.bookName}, function (err, book) {
+    Book.find({bookId : req.params.bookId}, function (err, book) {
         if (err) return next(err);
         res.send(book);
     })
 };
 
 exports.book_update = function (req, res,next) {
-    Book.update({bookName : req.params.bookName},{genre: req.params.genre}, function (err, book) {
+    Book.update({bookId : req.params.bookId},{bookName: req.body.bookName, genre: req.body.genre,
+    premiereDate: req.body.premiereDate}, function (err, book) {
         if(req.isAuthenticated()) {
             if (err) return next(err);
             res.send('Book udpated.');
@@ -42,14 +43,10 @@ exports.book_update = function (req, res,next) {
 };
 
 exports.book_delete = function (req, res,next) {
-    Book.deleteOne({bookName : req.params.bookName}, function (err,book) {
+    Book.deleteOne({bookId : req.params.bookId}, function (err,book) {
         if(req.isAuthenticated()) {
-        if (err) return next(err);
-        res.send('Book deleted successfully!');
-        } else {
-            res.redirect('/')
-        }
-    })
+        res.send('Book removed');
+    }});
 
 };
 

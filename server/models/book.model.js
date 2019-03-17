@@ -9,9 +9,9 @@ var bookSchema = new mongoose.Schema({
         type: String,
         required: 'Genre can\'t be empty'
     },
-    premierDate: {
-        type: Date,
-        default: Date.now
+    premiereDate: {
+        type: String,
+        default: (new Date().toISOString().slice(0,10))
     }
 });
-mongoose.model('Book', bookSchema);
+module.exports= mongoose.model('Book', bookSchema);
