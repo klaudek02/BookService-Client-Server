@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Book} from './book.model';
-import {User} from './user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +10,10 @@ export class BookService {
 
   constructor(private http: HttpClient) { }
 
+  createBook(book: Book)
+  {
+    return this.http.post(environment.bookBaseUrl, book);
+  }
   getBooks() {
     return this.http.get(environment.bookBaseUrl);
   }

@@ -1,3 +1,22 @@
-<p>
-  createbook works!
-</p>
+<div class="col-md-6">
+  <h2 class="text-center">Create book</h2>
+  <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="bookName">BookName:</label>
+      <input type="text" formControlName="bookName" placeholder="bookName" name="bookName" class="form-control" id="bookName">
+    </div>
+
+    <div class="form-group">
+      <label for="genre">Genre:</label>
+      <input formControlName="genre" placeholder="genre" name="genre" class="form-control" id="genre">
+    </div>
+
+    <div class="form-group">
+      <label for="premiereDate">PremiereDate:</label>
+      <input type="date" formControlName="premiereDate" placeholder="premiereDate" name="premiereDate" class="form-control" id="premiereDate">
+    </div>
+
+    <button class="btn btn-success">Add</button>
+    <button (click)="router.navigate(['books'])" class="symbol-summary"></button>
+  </form>
+</div>

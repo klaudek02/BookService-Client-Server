@@ -22,6 +22,8 @@ import { NewsComponent } from './user-side/news/news.component';
 import { CreatebookComponent } from './user-side/book/createbook/createbook.component';
 import { EditbookComponent } from './user-side/book/editbook/editbook.component';
 import {BookService} from "./shared/book.service";
+import {MaterialModule} from "./material/material.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -38,10 +40,12 @@ import {BookService} from "./shared/book.service";
   ],
   imports: [
     BrowserModule,
+    MaterialModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

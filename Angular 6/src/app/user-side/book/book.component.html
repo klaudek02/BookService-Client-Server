@@ -1,20 +1,23 @@
- <table class="table"class="table-fill">
-  <thead>
-  <tr>
-    <th>Book Name</th>
-    <th>Genre</th>
-    <th>Premiere Date</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let book of books">
-    <td>{{book.bookName}}</td>
-    <td>{{book.genre}}</td>
-    <td>{{book.premiereDate}}</td>
-    <td><button (click)="editBook(book)" class="btn btn-info"> Edit</button></td>
-    <td><button (click)="deleteBook(book)" class="btn btn-danger" [disabled]="true"> Delete</button></td>
-  </tr>
-  </tbody>
-</table>
+<mat-table [dataSource]="books" matSort class="mat-elevation-z8">
+  <div >
+  <ng-container matColumnDef="bookName">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> BookName </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.bookName}} </mat-cell>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="genre">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Genre </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.genre}} </mat-cell>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="premiereDate">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> PremiereDate </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.premiereDate}} </mat-cell>
+  </ng-container>
+  </div>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="editBook(row)"></mat-row>
+</mat-table>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

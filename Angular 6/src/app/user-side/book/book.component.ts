@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Book} from '../../shared/book.model';
 import {BookService} from '../../shared/book.service';
 import {Router} from '@angular/router';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-book',
@@ -10,23 +11,26 @@ import {Router} from '@angular/router';
 })
 export class BookComponent implements OnInit {
 
-  books: Book[];
-  newRow: boolean;
-
+  books: MatTableDataSource<Book>;
+  displayedColumns: string[] = ['bookName', 'genre', 'premiereDate'];
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(private bookService: BookService, private router: Router) { }
 
   ngOnInit() {
     this.bookService.getBooks()
       .subscribe((data: Book[]) => {
-        this.books = data;
+        this.books = new MatTableDataSource<Book>(data);
+        this.books.sort = this.sort;
+        this.books.paginator = this.paginator;
       });
   }
 
   deleteBook(book: Book) {
     this.bookService.deleteBook(book._id)
       .subscribe(data => {
-        this.books = this.books.filter(u => u !== book);
-      });
+        this.books.data = this.books.data.filter(i => i !== book);
+    });
     return this.router.navigate(['books']);
   }
 
@@ -36,7 +40,7 @@ export class BookComponent implements OnInit {
     return this.router.navigate(['editbook']);
   }
 
-  addBook() {
-
+  createBook() {
+    return this.router.navigate(['createbook']);
   }
 }
