@@ -14,10 +14,9 @@ var newsSchema = new mongoose.Schema({
         required: 'Description can\'t be empty'
     },
     postedDate: {
-        type:Date,
-        default: Date.now
+        type:String,
+        default: (new Date().toISOString().slice(0,10))
     },
     comments: [{type: Object}]
 });
-
-mongoose.model('News', newsSchema);
+module.exports= mongoose.model('News', newsSchema);

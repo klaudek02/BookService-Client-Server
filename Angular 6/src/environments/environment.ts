@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiBaseUrl: 'http://localhost:3000/api',
-  bookBaseUrl: 'http://localhost:3000/book'
+  bookBaseUrl: 'http://localhost:3000/book',
+  newsBaseUrl: 'http://localhost:3000/news'
 };
 
 /*

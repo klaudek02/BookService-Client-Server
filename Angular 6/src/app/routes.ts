@@ -5,10 +5,10 @@ import { SignInComponent } from './user/sign-in/sign-in.component';
 import { UserProfileComponent } from './user-side/user-profile/user-profile.component';
 import { AuthGuard } from './auth/auth.guard';
 import {UserSideComponent} from './user-side/user-side.component';
-import {BookComponent} from "./user-side/book/book.component";
-import {NewsComponent} from "./user-side/news/news.component";
-import {EditbookComponent} from "./user-side/book/editbook/editbook.component";
-import {CreatebookComponent} from "./user-side/book/createbook/createbook.component";
+import {BookComponent} from './user-side/book/book.component';
+import {NewsComponent} from './user-side/news/news.component';
+import {EditbookComponent} from './user-side/book/editbook/editbook.component';
+import {CreatebookComponent} from './user-side/book/createbook/createbook.component';
 
 export const appRoutes: Routes = [
     {
@@ -24,12 +24,12 @@ export const appRoutes: Routes = [
     },
     {
       path: 'userprofile', component: UserSideComponent,
-      canActivate:[AuthGuard],
+      canActivate: [AuthGuard],
       children: [{path: '', component: UserProfileComponent}]
     },
   {
     path: 'books', component: UserSideComponent,
-    canActivate:[AuthGuard],
+    canActivate: [AuthGuard],
     children: [{path: '', component: BookComponent}]
   },
   {
@@ -40,7 +40,7 @@ export const appRoutes: Routes = [
   },
   {
     path: 'news', component: UserSideComponent,
-    canActivate:[AuthGuard],
+    canActivate: [AuthGuard],
     children: [{path: '', component: NewsComponent}]
   }
 

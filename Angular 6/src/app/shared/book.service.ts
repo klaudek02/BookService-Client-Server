@@ -10,8 +10,7 @@ export class BookService {
 
   constructor(private http: HttpClient) { }
 
-  createBook(book: Book)
-  {
+  createBook(book: Book)  {
     return this.http.post(environment.bookBaseUrl, book);
   }
   getBooks() {

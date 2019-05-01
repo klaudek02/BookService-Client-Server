@@ -11,5 +11,4 @@ export class UserSideComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

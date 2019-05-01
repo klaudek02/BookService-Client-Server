@@ -1,3 +1,24 @@
-<p>
-  news works!
-</p>
+<mat-table [dataSource]="news" matSort class="mat-elevation-z8">
+  <div >
+    <ng-container matColumnDef="topic">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Topic </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.topic}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="postedDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Posted Date </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.postedDate}} </mat-cell>
+    </ng-container>
+  </div>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getNewsById(row)"></mat-row>
+</mat-table>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+<button (click)="createNews()">CREATE NEWS</button>

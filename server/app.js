@@ -9,6 +9,7 @@ const passport = require('passport');
 
 const rtsIndex = require('./routes/index.router');
 const bookRouter = require('./routes/book.route');
+const newsRouter = require('./routes/news.route');
 var app = express();
 
 // middleware
@@ -17,6 +18,7 @@ app.use(cors());
 app.use(passport.initialize());
 app.use('/api', rtsIndex);
 app.use('/book', bookRouter);
+app.use('/news', newsRouter);
 
 // error handler
 app.use((err, req, res, next) => {

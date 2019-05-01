@@ -1,18 +1,18 @@
 <div class="col-md-6">
-  <h2 class="text-center">Edit User</h2>
+  <h2 class="text-center">Edit Book</h2>
   <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="bookName">Email address:</label>
+      <label for="bookName">Book name:</label>
       <input type="text" formControlName="bookName" placeholder="bookName" name="bookName" class="form-control" id="bookName">
     </div>
 
     <div class="form-group">
-      <label for="genre">First Name:</label>
+      <label for="genre">Genre:</label>
       <input formControlName="genre" placeholder="genre" name="genre" class="form-control" id="genre">
     </div>
 
     <div class="form-group">
-      <label for="premiereDate">Last Name:</label>
+      <label for="premiereDate">Premiere date:</label>
       <input type="date" formControlName="premiereDate" placeholder="premiereDate" name="premiereDate" class="form-control" id="premiereDate">
     </div>
 

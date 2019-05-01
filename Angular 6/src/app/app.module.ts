@@ -23,7 +23,9 @@ import { CreatebookComponent } from './user-side/book/createbook/createbook.comp
 import { EditbookComponent } from './user-side/book/editbook/editbook.component';
 import {BookService} from "./shared/book.service";
 import {MaterialModule} from "./material/material.module";
+import {NewsService} from "./shared/news.service"
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ShownewsComponent } from './user-side/news/shownews/shownews/shownews.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BookComponent,
     NewsComponent,
     CreatebookComponent,
-    EditbookComponent
+    EditbookComponent,
+    ShownewsComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-  }, AuthGuard, UserService, BookService],
+  }, AuthGuard, UserService, BookService, NewsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
