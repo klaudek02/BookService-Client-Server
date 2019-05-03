@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
-import { User } from './user.model';
+import { User } from './model/user.model';
+import {ResponseType} from '@angular/http';
 
 @Injectable({
   providedIn: 'root'
@@ -20,18 +21,20 @@ export class UserService {
 
   //HttpMethods
 
-  postUser(user: User){
-    return this.http.post(environment.apiBaseUrl +'/register',user,this.noAuthHeader);
+  postUser(user: User) {
+    return this.http.post(environment.apiBaseUrl + '/register', user, this.noAuthHeader);
   }
 
   login(authCredentials) {
-    return this.http.post(environment.apiBaseUrl + '/authenticate', authCredentials,this.noAuthHeader);
+    return this.http.post(environment.apiBaseUrl + '/authenticate', authCredentials, this.noAuthHeader);
   }
 
   getUserProfile() {
     return this.http.get(environment.apiBaseUrl + '/userProfile');
   }
-
+  getUsernameById(id: string) {
+    return this.http.get(environment.apiBaseUrl + '/username/' + id, {responseType: 'text'});
+  }
 
   //Helper Methods
 
@@ -48,20 +51,21 @@ export class UserService {
   }
 
   getUserPayload() {
-    var token = this.getToken();
+    let token = this.getToken();
     if (token) {
-      var userPayload = atob(token.split('.')[1]);
+      let userPayload = atob(token.split('.')[1]);
       return JSON.parse(userPayload);
-    }
-    else
+    } else {
       return null;
+    }
   }
 
   isLoggedIn() {
-    var userPayload = this.getUserPayload();
-    if (userPayload)
+    let userPayload = this.getUserPayload();
+    if (userPayload) {
       return userPayload.exp > Date.now() / 1000;
-    else
+    } else {
       return false;
+    }
   }
 }

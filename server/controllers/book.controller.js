@@ -22,7 +22,7 @@ exports.book_create = function (req, res,next) {
 };
 
 exports.book_read = function (req, res,next) {
-    Book.find({bookId : req.params.bookId}, function (err, book) {
+    Book.find({_id : req.params.id}, function (err, book) {
         if (err) return next(err);
         res.send(book);
     })
@@ -52,13 +52,6 @@ exports.book_delete = function (req, res,next) {
 
 exports.book_readAll = function (req, res,next) {
     Book.find({}, function (err, book) {
-        if (err) return next(err);
-        res.send(book);
-    })
-};
-
-exports.book_by_genre = function (req,res,next){
-    Book.findByGenre({bookGenre: req.params.bookGenre}, function (err, book) {
         if (err) return next(err);
         res.send(book);
     })

@@ -25,7 +25,7 @@ import {BookService} from "./shared/book.service";
 import {MaterialModule} from "./material/material.module";
 import {NewsService} from "./shared/news.service"
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ShownewsComponent } from './user-side/news/shownews/shownews/shownews.component';
+import { ShowNewsComponent } from './user-side/news/shownews/shownews.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import { ShownewsComponent } from './user-side/news/shownews/shownews/shownews.c
     NewsComponent,
     CreatebookComponent,
     EditbookComponent,
-    ShownewsComponent
+    ShowNewsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { News } from './news.model';
+import { News } from './model/news.model';
 
 describe('News', () => {
   it('should create an instance', () => {

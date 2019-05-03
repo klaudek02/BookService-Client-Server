@@ -1,0 +1,30 @@
+<table *ngIf="news" class="table-fill">
+  <thead>
+  <tr>
+    <th colspan="2" class="text-center">NEWS</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Posted By:</td>
+    <td>{{userName}}</td>
+  </tr>
+  <tr>
+    <td>Posted date: </td>
+    <td>{{news.postedDate}}</td>
+  </tr>
+  <tr>
+    <td>Topic: </td>
+    <td>{{news.topic}}</td>
+  </tr>
+  <tr>
+    <td>Descrption: </td>
+    <td>{{news.description}}</td>
+  </tr>
+  <tr>
+    <td colspan="2" class="text-center">
+      <input type="button" (click)="addComment()" value="Add comment" />
+    </td>
+  </tr>
+  </tbody>
+</table>

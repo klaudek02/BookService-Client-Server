@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {News} from '../../shared/news.model';
+import {News} from '../../shared/model/news.model';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import {Book} from '../../shared/book.model';
+import {Book} from '../../shared/model/book.model';
 import {NewsService} from '../../shared/news.service';
 import {BookService} from '../../shared/book.service';
 import {Router} from '@angular/router';
@@ -41,6 +41,12 @@ export class NewsComponent implements OnInit {
   }
   createNews() {
     return this.router.navigate(['createnews']);
+  }
+  getNews(news: News) {
+    localStorage.removeItem('getNewsId');
+    localStorage.setItem('getNewsId', news._id);
+    console.log('asdasdas');
+    return this.router.navigate(['getnews']);
   }
 
 }

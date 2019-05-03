@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {News} from './news.model';
+import {News} from './model/news.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class NewsService {
   deleteNews(id: string) {
     return this.http.delete<News>(environment.newsBaseUrl + '/' + id);
   }
-  getNewsById(news: News) {
-    return this.http.get<News>(environment.newsBaseUrl + '/' + news._id);
+  getNewsById(id: string) {
+    return this.http.get<News>(environment.newsBaseUrl + '/' + id);
   }
 }

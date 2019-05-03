@@ -9,6 +9,7 @@ import {BookComponent} from './user-side/book/book.component';
 import {NewsComponent} from './user-side/news/news.component';
 import {EditbookComponent} from './user-side/book/editbook/editbook.component';
 import {CreatebookComponent} from './user-side/book/createbook/createbook.component';
+import {ShowNewsComponent} from "./user-side/news/shownews/shownews.component";
 
 export const appRoutes: Routes = [
     {
@@ -42,7 +43,9 @@ export const appRoutes: Routes = [
     path: 'news', component: UserSideComponent,
     canActivate: [AuthGuard],
     children: [{path: '', component: NewsComponent}]
+  },
+  {
+    path: 'getnews', component: ShowNewsComponent
   }
-
 
 ];

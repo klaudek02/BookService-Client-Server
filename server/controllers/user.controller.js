@@ -70,4 +70,16 @@ module.exports.banUser = (req, res, next) =>{
     else
         return res.status(404).json({ status: false, message: 'You are not admin'});
 
-}
+};
+module.exports.user_read = function (req, res,next) {
+    User.findOne({_id : req.params.id}, function (err, user) {
+        if (err) return next(err);
+        res.send(user.username);
+    })
+};
+module.exports.user_readAll = function (req, res,next) {
+    User.find({}, function (err, user) {
+        if (err) return next(err);
+        res.send(user);
+    })
+};
